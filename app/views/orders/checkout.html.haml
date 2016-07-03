@@ -1,6 +1,6 @@
 - @page_title = 'Checkout'
 = render 'checkout_sidebar'
-    
+
 .checkout
   %p.secure Secure connection
   %h2 Place your order
@@ -13,7 +13,7 @@
 
   - unless @order.delivery_required? && @order.delivery_service.nil?
     %h3 Complete your details below to complete your order
-    
+
     = form_for @order, :url => checkout_path, :html => {:class => 'checkout disableable'} do |f|
       = f.error_messages
       .customer
@@ -40,7 +40,7 @@
             %dd= f.text_field :billing_address3, :placeholder => "Town/City"
             %dd= f.text_field :billing_address4, :placeholder => "County"
             %dd= f.text_field :billing_postcode, :placeholder => "Postcode", :class => 'postcode'
-            %dd= f.collection_select :billing_country_id, Shoppe::Country.ordered, :id, :name
+            %dd= f.collection_select :billing_country_id, Shopr::Country.ordered, :id, :name
             %dd
               = f.check_box :separate_delivery_address
               = f.label :separate_delivery_address, "Deliver to a different address?"
@@ -51,10 +51,10 @@
             %dd= f.text_field :delivery_address3, :placeholder => "Town/City"
             %dd= f.text_field :delivery_address4, :placeholder => "County"
             %dd= f.text_field :delivery_postcode, :placeholder => "Postcode", :class => 'postcode'
-            %dd= f.collection_select :delivery_country_id, Shoppe::Country.ordered, :id, :name
-            
+            %dd= f.collection_select :delivery_country_id, Shopr::Country.ordered, :id, :name
+
       %p.submit= f.submit "Continue to payment"
 
   - else
-    %p Please call us to place this order. 
-    
+    %p Please call us to place this order.
+

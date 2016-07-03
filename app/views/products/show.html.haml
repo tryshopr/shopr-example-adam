@@ -5,7 +5,7 @@
     .img{:style => "background-image:url(#{@product.default_image.path})"}
   %h2= @product.name
   %p.intro= @product.short_description
-  
+
   - if @product.has_variants?
     %table.variants
       - for variant in @product.variants
@@ -48,7 +48,7 @@
                 %div.in_the_box
                   %h3 What's in the box?
                   = markdown @product.in_the_box
-            %li.item.ask= mail_to Shoppe.settings.email_address, "Ask us a question about this", :subject => "Question about the #{@product.name}"
+            %li.item.ask= mail_to Shopr.settings.email_address, "Ask us a question about this", :subject => "Question about the #{@product.name}"
 
     %hr
 
